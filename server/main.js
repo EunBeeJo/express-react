@@ -34,7 +34,7 @@ app.use(function(err, req, res, next){
     res.status(500).send('Somthing borke!');
 });
 
-app.use('/', express.static(path.join(__dirname, './frontend/public')));
+app.use('/', express.static(path.join(__dirname, '../frontend/public')));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/api', api);

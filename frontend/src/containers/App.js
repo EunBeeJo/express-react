@@ -3,7 +3,6 @@ import { Header } from 'components';
 
 class App extends React.Component {
     render(){
-
         return (
             <Header/>
         );
