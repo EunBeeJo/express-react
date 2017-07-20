@@ -53,7 +53,7 @@ router.post('/signup', (req, res) => {
       if (err) throw err;
       return res.json({ sucess: true });
     });
-  };)
+  });
 });
 
 
@@ -92,7 +92,7 @@ router.post('/signin', (req, res) => {
 
     // Return Success
     return res.json({
-      success: true;
+      success: true
     });
   });
 });

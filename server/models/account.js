@@ -15,7 +15,7 @@ Account.methods.generateHash = function(password) {
 };
 
 // compares the password
-Accout.methods.validateHash = function(password) {
+Account.methods.validateHash = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
 

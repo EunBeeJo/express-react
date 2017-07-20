@@ -77,7 +77,7 @@ router.post('/:id', (req, res) => {
   }
 
   // Find Memo
-  if (memo.findById(req.params.id, (err, memo) => {
+  if (memo.findById(req.params.id), (err, memo) => {
     if (err) throw err;
 
     // If Memo Does Not Exist
@@ -91,7 +91,7 @@ router.post('/:id', (req, res) => {
     // If Exist, Check Writer
     if (memo.writer != req.session.loginInfo.username) {
       return res.status(403).json({
-        error: PERMISSION FAILURE,
+        error: "PERMISSION FAILURE",
         code: 5
       });
     }
@@ -166,7 +166,7 @@ router.delete('/:id', (req, res) => {
 */
 router.get('/', (req, res) => {
   Memo.find()
-      .sort({ "_id: -1" })
+      .sort({ "_id": -1 })
       .limit(6)
       .exec((err, memos) => {
         if (err) throw err;

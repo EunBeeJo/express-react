@@ -1,10 +1,12 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
     entry: [
       './frontend/src/index.js',
       'webpack-dev-server/client?http://0.0.0.0:4000',
-      'webpack/hot/only-dev-server'
+      'webpack/hot/only-dev-server',
+      './frontend/src/style.css'
     ],
 
     output: {
@@ -37,23 +39,39 @@ module.exports = {
     },
 
     plugins: [
-      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoEmitOnErrorsPlugin()
     ],
 
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/,
-                query: {
+              test: /\.js$/,
+              loaders: ['react-hot-loader', 'babel-loader?' + JSON.stringify({
                     cacheDirectory: true,
-                    presets: ['es2015', 'react'],
-                    plugins: ["react-hot-loader/babel"]
+                    presets: ['es2015', 'react']
+              })],
+              exclude: /node_modules/,
+            },
+            {
+              test: /\.css$/,
+              use: [
+                {
+                  loader: "style-loader"
+                },
+                {
+                  loader: "css-loader",
+                  options: {
+                    modules: true
+                  }
                 }
+              ]
             }
         ]
+    },
+
+    resolve: {
+      modules: [path.resolve(__dirname, "frontend/src"), "node_modules"]
     }
 };

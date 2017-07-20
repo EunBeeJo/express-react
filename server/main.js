@@ -17,7 +17,9 @@ const db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', () => {console.log('Connected to mongodb server');});
 // mongoose.connect('mongodb://username:password@host:port/database=');
-mongoose.connect('mongodb://localhost/codelab');
+mongoose.connect('mongodb://localhost/codelab', {
+  useMongoClient: true
+});
 
 /* use session */
 app.use(session({
@@ -48,7 +50,7 @@ app.listen(port, () => {
 
 if (process.env.NODE_ENV == 'development') {
   console.log('Server is running on development mode');
-  const config = require('../webpack-dev-config');
+  const config = require('../webpack.dev.config');
   const compiler = webpack(config);
   const devServer = new WebpackDevServer(compiler, config.devServer);
   devServer.listen(
