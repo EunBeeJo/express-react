@@ -39,6 +39,12 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/api', api);
 
+/* support client-side routing */
+app.get('*', (req, res) => {
+  console.log(path.resolve(__dirname, '../frontend/public/index.html'));
+  res.sendFile(path.resolve(__dirname, '../frontend/public/index.html'));
+});
+
 app.get('/hello', (res, req) => {
   return res.send('Hello CodeLab');
 });
