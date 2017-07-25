@@ -51,7 +51,7 @@ router.post('/signup', (req, res) => {
     // SAVE IN THE DB
     account.save( err => {
       if (err) throw err;
-      return res.json({ sucess: true });
+      return res.json({ success: true });
     });
   });
 });
