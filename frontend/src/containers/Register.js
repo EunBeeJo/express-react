@@ -28,6 +28,7 @@ class Register extends React.Component {
             'Password is too short',
             'Username already exists'
           ];
+
           let $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[this.props.errorCode - 1] + '</span>');
           Materialize.toast($toastContent, 2000);
           return false;

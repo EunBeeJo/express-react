@@ -54,7 +54,7 @@ export default function authentication(state, action) {
     case types.AUTH_REGISTER_SUCCESS:
       return update(state, {
         register: {
-          statuse: { $set: 'SUCCESS' }
+          status: { $set: 'SUCCESS' }
         }
       });
       case types.AUTH_REGISTER_FAILURE:
