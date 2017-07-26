@@ -83,6 +83,14 @@ router.post('/signin', (req, res) => {
       });
     }
 
+    // Check whether the password is varid
+    if (!account.validateHash(req.body.password)) {
+      return res.status(401).json({
+        error: "LOGIN FAILED",
+        code: 1
+      });
+    }
+    
     // Alter session
     let session = req.session;
     session.loginInfo = {

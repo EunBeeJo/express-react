@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
   // Save In DB
   memo.save(err => {
     if (err) throw err;
-    return res.json({ sucess: true });
+    return res.json({ success: true });
   });
 });
 
