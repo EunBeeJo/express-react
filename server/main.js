@@ -41,7 +41,6 @@ app.use('/api', api);
 
 /* support client-side routing */
 app.get('*', (req, res) => {
-  console.log(path.resolve(__dirname, '../frontend/public/index.html'));
   res.sendFile(path.resolve(__dirname, '../frontend/public/index.html'));
 });
 
