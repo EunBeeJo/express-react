@@ -121,7 +121,7 @@ router.put('/:id', (req, res) => {
 */
 router.delete('/:id', (req, res) => {
   // Check Memo Id Validity
-  if (!mongoose.Types.ObjectId.isValid(req.param.id)) {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
       error: "INVALID ID",
       code: 1
