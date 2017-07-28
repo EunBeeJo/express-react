@@ -41,7 +41,7 @@ class Memo extends React.Component {
 
   handleRemove() {
     let id = this.props.data._id;
-    let index = this.props.data.index;
+    let index = this.props.index;
     this.props.onRemove(id, index);
   }
 
@@ -69,7 +69,7 @@ class Memo extends React.Component {
       <div className="card">
         <div className="info">
           <a className="username">{data.writer}</a> wrote a log · <TimeAgo date={data.date.created}/>
-          { data.is_edited ? editedInfo : undefined }
+            { data.is_edited ? editedInfo : undefined }
           <div className="right">
             { ownership ? dropDownMenu : undefined }
           </div>

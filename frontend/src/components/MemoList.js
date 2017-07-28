@@ -10,6 +10,7 @@ class MemoList extends React.Component {
                     data={memo}
                     ownership={ (memo.writer === this.props.currentUser) }
                     key={memo._id}
+                    index={i}
                     onEdit={this.props.onEdit}
                     onRemove={this.props.onRemove}
                   />);
