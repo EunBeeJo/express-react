@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
       4: NO RESOURCE,
       5: PERMISSION FAILURE
 */
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   // Check Memo ID Validity
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
@@ -78,10 +78,9 @@ router.post('/:id', (req, res) => {
   }
 
   // Find Memo
-  if (memo.findById(req.params.id), (err, memo) => {
+  Memo.findById(req.params.id, (err, memo) => {
     if (err) throw err;
 
-    // If Memo Does Not Exist
     if (!memo) {
       return res.status(404).json({
         error: "NO RESOURCE",
@@ -97,10 +96,10 @@ router.post('/:id', (req, res) => {
       });
     }
 
-    // Modify And Save In DB
+    // MODIFY AND SAVE IN DB
     memo.contents = req.body.contents;
-    memo.date.edited = req.body.edited;
-    memo.is_edited = req.body.is_edited;
+    memo.date.edited = new Date();
+    memo.is_edited = true;
 
     memo.save((err, memo) => {
       if (err) throw err;
